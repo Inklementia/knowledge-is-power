@@ -5,10 +5,11 @@ namespace _Sources._Scripts.Infrastructure
     public class Game
     {
         public static IInputService InputService;
+        public GameStateMachine GameStateMachine;
 
-        public Game()
+        public Game(ICoroutineRunner coroutineRunner)
         {
-            InputService = new InputService();
+            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner));
         }
     }
 }
