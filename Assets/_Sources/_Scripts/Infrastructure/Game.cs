@@ -1,3 +1,4 @@
+using _Sources._Scripts.Interfaces;
 using _Sources._Scripts.Services.Input;
 
 namespace _Sources._Scripts.Infrastructure
@@ -7,9 +8,10 @@ namespace _Sources._Scripts.Infrastructure
         public static IInputService InputService;
         public GameStateMachine GameStateMachine;
 
-        public Game(ICoroutineRunner coroutineRunner)
+
+        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
         {
-            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner));
+            GameStateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain);
         }
     }
 }

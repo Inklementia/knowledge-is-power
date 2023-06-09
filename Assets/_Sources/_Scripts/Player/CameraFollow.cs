@@ -1,31 +1,40 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace _Sources._Scripts.Player
 {
-    //let camera follow target
-    public class CameraFollow : MonoBehaviour
+  public class CameraFollow : MonoBehaviour
+  {
+    [SerializeField] private float _rotationAngleX;
+    [SerializeField] private float _distance;
+    [SerializeField] private float _offsetY;
+
+    private Transform _following;
+
+    private void LateUpdate()
     {
-        public Transform target;
-        public float lerpSpeed = 1.0f;
+      if (_following == null)
+      {
+        return;
+      }
 
-        private Vector3 offset;
+      Quaternion rotation = Quaternion.Euler(_rotationAngleX, 0, 0);
+      Vector3 position = rotation * new Vector3(0, 0, -_distance) + FollowingPointPosition();
 
-        private Vector3 targetPos;
-
-        private void Start()
-        {
-            if (target == null) return;
-
-            offset = transform.position - target.position;
-        }
-
-        private void Update()
-        {
-            if (target == null) return;
-
-            targetPos = target.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
-        }
-
+      transform.rotation = rotation;
+      transform.position = position;
     }
+
+    public void Follow(GameObject following)
+    {
+      _following = following.transform;
+    }
+
+    private Vector3 FollowingPointPosition()
+    {
+      Vector3 followingPosition = _following.position;
+      followingPosition.y += _offsetY;
+
+      return followingPosition;
+    }
+  }
 }
