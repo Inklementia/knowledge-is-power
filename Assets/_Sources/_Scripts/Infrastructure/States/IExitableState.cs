@@ -1,4 +1,4 @@
-namespace _Sources._Scripts.Interfaces
+namespace _Sources._Scripts.Infrastructure.States
 {
     public interface IExitableState
     {

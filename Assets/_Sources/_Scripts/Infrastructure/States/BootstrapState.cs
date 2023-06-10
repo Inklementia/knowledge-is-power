@@ -1,4 +1,7 @@
-using _Sources._Scripts.Interfaces;
+using _Sources._Scripts.Infrastructure.AssetManagement;
+using _Sources._Scripts.Infrastructure.Factory;
+using _Sources._Scripts.Infrastructure.Services;
+using _Sources._Scripts.Scene;
 using _Sources._Scripts.Services.Input;
 
 namespace _Sources._Scripts.Infrastructure.States
@@ -28,17 +31,14 @@ namespace _Sources._Scripts.Infrastructure.States
 
         public void Exit()
         {
-           
         }
-        
+
         private void RegisterServices()
         {
-            Game.InputService = RegisterInputService();
-        }
-        
-        private static IInputService RegisterInputService()
-        {   
-            return new InputService();
+            Game.InputService = new InputService();
+            AllServices.Container.RegisterSingle<IInputService>(new InputService());
+            AllServices.Container.RegisterSingle<IGameFactory>(
+                new GameFactory(AllServices.Container.Single<IAssets>()));
         }
     }
 }

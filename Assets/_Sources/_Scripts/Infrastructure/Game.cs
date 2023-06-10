@@ -1,4 +1,4 @@
-using _Sources._Scripts.Interfaces;
+using _Sources._Scripts.Scene;
 using _Sources._Scripts.Services.Input;
 
 namespace _Sources._Scripts.Infrastructure

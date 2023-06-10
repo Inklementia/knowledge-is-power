@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using _Sources._Scripts.Interfaces;
+using _Sources._Scripts.Infrastructure;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace _Sources._Scripts.Infrastructure
+namespace _Sources._Scripts.Scene
 {
     public class SceneLoader
     {

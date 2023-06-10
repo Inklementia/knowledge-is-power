@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Sources._Scripts
+namespace _Sources._Scripts.Environment
 {
     //when object exit the trigger, put it to the assigned layer and sorting layers
     //used in the stair objects for player to travel between layers

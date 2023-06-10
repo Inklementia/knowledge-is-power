@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System;
 using _Sources._Scripts.Infrastructure.States;
-using _Sources._Scripts.Interfaces;
+using _Sources._Scripts.Scene;
 
 namespace _Sources._Scripts.Infrastructure
 {

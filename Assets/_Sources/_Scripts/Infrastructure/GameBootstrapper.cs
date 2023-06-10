@@ -1,5 +1,5 @@
 using _Sources._Scripts.Infrastructure.States;
-using _Sources._Scripts.Interfaces;
+using _Sources._Scripts.Scene;
 using UnityEngine;
 
 namespace _Sources._Scripts.Infrastructure

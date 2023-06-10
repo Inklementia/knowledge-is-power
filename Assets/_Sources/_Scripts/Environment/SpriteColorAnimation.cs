@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Sources._Scripts
+namespace _Sources._Scripts.Environment
 {
     //animate the sprite color base on the gradient and time
     public class SpriteColorAnimation : MonoBehaviour

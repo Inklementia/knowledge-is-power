@@ -2,7 +2,7 @@
 using UnityEngine;
 
 //when something get into the alta, make the runes glow
-namespace _Sources._Scripts
+namespace _Sources._Scripts.Environment
 {
 
     public class PropsAltar : MonoBehaviour
