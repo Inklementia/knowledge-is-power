@@ -1,12 +1,11 @@
-﻿using System;
-using _Sources._Scripts.Infrastructure;
+﻿using _Sources._Scripts.Data;
 using _Sources._Scripts.Infrastructure.Services;
 using _Sources._Scripts.Services.Input;
 using UnityEngine;
 
 namespace _Sources._Scripts.Player
 {
-    public class TopDownCharacterController : MonoBehaviour
+    public class TopDownCharacterController : MonoBehaviour,ISavedProgress
     {
         private const string IsMoving = "IsMoving";
         private const string X = "x";
@@ -42,6 +41,16 @@ namespace _Sources._Scripts.Player
             _animator.SetBool(Moving, dir.magnitude > 0);
 
            _rigidbody.velocity = speed * dir;
+        }
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            progress.WorldData.Position = transform.position.AsVectorData();
+        }
+
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            //
         }
     }
 }

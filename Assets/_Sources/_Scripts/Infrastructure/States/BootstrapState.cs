@@ -3,6 +3,7 @@ using _Sources._Scripts.Infrastructure.Factory;
 using _Sources._Scripts.Infrastructure.Services;
 using _Sources._Scripts.Scene;
 using _Sources._Scripts.Services.Input;
+using _Sources._Scripts.Services.PersistentProgress;
 
 namespace _Sources._Scripts.Infrastructure.States
 {
@@ -42,6 +43,7 @@ namespace _Sources._Scripts.Infrastructure.States
             
             _services.RegisterSingle<IInputService>(new InputService());
             _services.RegisterSingle<IAssets>(new AssetProvider());
+            _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());  
             _services.RegisterSingle<IGameFactory>(
                 new GameFactory(_services.Single<IAssets>()));
         }
