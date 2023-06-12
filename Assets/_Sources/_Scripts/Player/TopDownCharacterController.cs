@@ -2,6 +2,7 @@
 using _Sources._Scripts.Infrastructure.Services;
 using _Sources._Scripts.Services.Input;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Sources._Scripts.Player
 {
@@ -21,6 +22,8 @@ namespace _Sources._Scripts.Player
         private static readonly int X1 = Animator.StringToHash(X);
         private static readonly int Moving = Animator.StringToHash(IsMoving);
         
+        private static string CurrentLevel() => SceneManager.GetActiveScene().name;
+              
         private void Awake()
         {
             _inputService = AllServices.Container.Single<IInputService>();
@@ -45,12 +48,27 @@ namespace _Sources._Scripts.Player
 
         public void LoadProgress(PlayerProgress progress)
         {
-            progress.WorldData.Position = transform.position.AsVectorData();
+            if (CurrentLevel() != progress.WorldData.PositionOnLevel.Level) return;
+            
+            var savedPosition = progress.WorldData.PositionOnLevel.Position;
+            if (savedPosition != null)
+            {
+                Warp(savedPosition);
+            }
+        }
+
+        private void Warp(Vector3Data savedPosition)
+        {   
+            // disable physics
+            
+            transform.position = savedPosition.AsUnityVector();
+            
+            // enable physics
         }
 
         public void UpdateProgress(PlayerProgress progress)
         {
-            //
+            progress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(),transform.position.AsVectorData());
         }
     }
 }

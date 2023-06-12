@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.UIElements;
 
 
 namespace _Sources._Scripts.Data
@@ -6,6 +7,7 @@ namespace _Sources._Scripts.Data
     [Serializable]
     public class WorldData
     {
-        public Vector3Data Position { get; set; }
+       
+        public PositionOnLevel PositionOnLevel { get; set; }
     }
 }
